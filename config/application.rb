@@ -21,7 +21,13 @@ module LifeLens
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = ENV.fetch('TZ', 'Europe/London')
     # config.eager_load_paths << Rails.root.join("extras")
+
+
+    config.api_url = ENV['API_URL']
+
+    # WIP: Production deployment secrets can be provided by the environment.
+    config.api_token = ENV['API_TOKEN'].present? ? ENV['API_TOKEN'] : Rails.application.credentials.api_token
   end
 end

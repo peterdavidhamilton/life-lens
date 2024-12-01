@@ -40,13 +40,16 @@ gem 'thruster', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-# Environment variables
-gem 'dotenv-rails', '~> 3.1'
-
 # Terse templating
 gem 'slim-rails', '~> 3.6'
 
+# API Queries
+gem 'http', '~> 5.2'
+
 group :development, :test do
+  # Environment variables [https://github.com/bkeepers/dotenv]
+  gem 'dotenv-rails', '~> 3.1'
+
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[ mri windows ], require: 'debug/prelude'
 
@@ -56,16 +59,25 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rubocop-rails-omakase', require: false
 
-  gem 'rspec-rails', '~> 7.1', group: :test
+  # Use RSpec for testing [https://github.com/rspec/rspec-rails]
+  gem 'rspec-rails', '~> 7.1'
+  # https://github.com/thoughtbot/factory_bot_rails
+  gem 'factory_bot_rails'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
+  gem 'yard-junk'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-byebug'
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'simplecov', '~> 0.22.0'
 end
