@@ -1,0 +1,45 @@
+---
+services:
+  app:
+    container_name: life_lens
+    build:
+      context: .
+    image: life_lens
+    healthcheck:
+      test: curl --fail http://localhost:80/up || exit 1    
+    restart: on-failure      
+    environment:
+      - DATABASE_URL=postgres://postgres:password@db:5432/life_lens_production
+      - RAILS_MASTER_KEY
+      - RAILS_LOG_TO_STDOUT
+    # volumes:
+    #   - .:/rails
+    depends_on:
+      - db
+    ports:
+      - 80:80
+    tty: true
+    stdin_open: true    
+    networks:
+      - aire
+
+  db:
+    container_name: aire_db
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    healthcheck:
+      test: pg_isready
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - aire
+
+volumes:
+  db:
+
+networks:
+  aire:

@@ -1,5 +1,20 @@
 # README
 
+## Getting started
+
+Create `.env` file containing `RAILS_MASTER_KEY`
+
+### Development
+
+1. `$ rails db:prepare`
+1. `$ rails server`
+
+### Production
+
+1. `$ docker-compose up`
+
+---
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
