@@ -9,6 +9,10 @@ Create `.env` file containing `RAILS_MASTER_KEY`
 1. `$ rails db:prepare`
 1. `$ rails server`
 
+### Test
+
+1. `$ rspec`
+
 ### Production
 
 1. `$ docker-compose up`
