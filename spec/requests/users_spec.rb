@@ -57,6 +57,8 @@ RSpec.describe '/users', type: :request do
     end
 
     context 'with valid parameters' do
+      before { create :question }
+
       it 'creates a new User' do
         expect {
           post users_url, params: { user: valid_attributes }
@@ -65,7 +67,7 @@ RSpec.describe '/users', type: :request do
 
       it 'redirects to the created user' do
         post users_url, params: { user: valid_attributes }
-        expect(response).to redirect_to(user_url(User.last))
+        expect(response).to redirect_to(question_url(Question.first))
       end
     end
 

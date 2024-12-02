@@ -21,5 +21,9 @@ html
     = javascript_importmap_tags
     
   body
-    = yield
+    header
+      = link_to 'Home', root_path
+
+    main
+      = yield
   

@@ -8,3 +8,9 @@ div id="#{dom_id user}"
   p
     strong Date of Birth:
     =< user.dob
+  p
+    strong Score:
+    =< user.score
+
+  - if !user.healthy?
+    p Information pack: 

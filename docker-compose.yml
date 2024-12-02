@@ -10,14 +10,14 @@ services:
     restart: on-failure      
     environment:
       - DATABASE_URL=postgres://postgres:password@db:5432/life_lens_production
-      # Replace with production endpoint
+      # Replace with production endpoint      
       - API_URL=https://al-tech-test-apim.azure-api.net/tech-test/t2/patients
+      # Disable HTTPS for local testers without certificates
+      - DEMO=y
       - RAILS_MASTER_KEY
       - API_TOKEN
       - TZ
       - RAILS_LOG_TO_STDOUT
-    # volumes:
-    #   - .:/rails
     depends_on:
       - db
     ports:

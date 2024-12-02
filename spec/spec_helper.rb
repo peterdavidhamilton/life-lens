@@ -1,9 +1,7 @@
 require 'simplecov'
 
-SimpleCov.minimum_coverage 90
+SimpleCov.minimum_coverage 100
 SimpleCov.start 'rails'
-
-require 'pry-byebug'
 
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

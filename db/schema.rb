@@ -10,15 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_01_114655) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_02_082136) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "users", force: :cascade do |t|
-    t.string "nhs_number"
-    t.string "last_name"
-    t.date "dob"
+  create_table "answers", force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.bigint "question_id", null: false
+    t.boolean "value", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "nhs_number", null: false
+    t.string "last_name", null: false
+    t.date "dob"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nhs_number", "last_name"], name: "index_users_on_nhs_number_and_last_name"
+  end
+
+  add_foreign_key "answers", "questions"
+  add_foreign_key "answers", "users"
 end

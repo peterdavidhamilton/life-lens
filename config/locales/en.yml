@@ -3,9 +3,16 @@ en:
     attributes:
       user:
         nhs_number: NHS number
+        dob: D.O.B.
 
   patient_validator: 
     not_found: Your details could not be found
 
   user:
     under_age: You are not eligible for this service
+    healthy: |
+      Thank you for answering our questions, we don't need to see you at this time. 
+      Keep up the good work!
+    at_risk: |
+      We think there are some simple things you could do to improve you quality of life, 
+      please phone to book an appointment

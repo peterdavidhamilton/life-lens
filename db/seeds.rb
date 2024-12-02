@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+[
+  'Q1. Do you drink on more than 2 days a week?',
+  'Q2. Do you smoke?',
+  'Q3. Do you exercise more than 1 hour per week?'
+].each do |name|
+  Question.find_or_create_by!(name: name)
+end
