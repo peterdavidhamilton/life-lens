@@ -45,3 +45,13 @@ Recommended install with `Docker`, `docker-compose` and `ASDF`.
 Peter Hamilton
 
 > FYI there is a spelling mistake of "eligble" in the problem README.
+
+### Summary
+
+- Code annotations can be accessed in the console and browser using the commands above
+- Test coverage is at 100% including acceptance and unit tests
+- Scoring inconsistencies have been identified and tested
+- Dev and test can leverage the same containerised DB server as prod, concurrently
+- Dev focus has prioritised functionality, with consideration for testers without compromising code
+- Frontend styling is minimal
+- Rails credential key available on request
